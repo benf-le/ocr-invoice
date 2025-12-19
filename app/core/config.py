@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     
     # Model paths
     BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
+    # Nếu BASE_DIR kết thúc bằng /app/app, thì lùi thêm 1 level
+    if BASE_DIR.name == "app" and BASE_DIR.parent.name == "app":
+        BASE_DIR = BASE_DIR.parent
     WEIGHTS_DIR: Path = BASE_DIR / "weights"
     DETECTOR_MODEL_PATH: Path = WEIGHTS_DIR / "Model_det_small"
     RECOGNIZER_MODEL_PATH: Path = WEIGHTS_DIR / "Model_rec"
