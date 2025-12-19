@@ -22,16 +22,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean
 
 # Copy requirements.txt trước để tận dụng Docker cache layer
-# Layer này sẽ được cache nếu requirements.txt không thay đổi
 COPY requirements.txt .
 
 # Cài đặt Python dependencies với cache
-# Sử dụng --no-cache-dir để giảm kích thước image
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
     pip install --no-cache-dir -r requirements.txt
 
-# Copy toàn bộ code vào container
-# Layer này sẽ rebuild khi code thay đổi, nhưng dependencies đã được cache
+# Copy toàn bộ code vào container (bao gồm app/ và weights/)
 COPY . .
 
 # Tạo non-root user để chạy ứng dụng (best practice cho security)
