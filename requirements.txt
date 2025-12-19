@@ -1,8 +1,14 @@
-# requirements.txt
-fastapi
-uvicorn[standard]
-python-multipart
+# FastAPI and server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# OCR and Deep Learning
 paddlepaddle==3.2.2
-opencv-python
-numpy
-Pillow
+opencv-python==4.8.1.78
+numpy==1.24.3
+
+# Utilities
+python-dotenv==1.0.0
