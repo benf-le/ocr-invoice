@@ -23,9 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Copy requirements.txt trước để tận dụng Docker cache layer
 # Layer này sẽ được cache nếu requirements.txt không thay đổi
-COPY app/ ./app/
 COPY requirements.txt .
-COPY weights/ ./weights/
 
 # Cài đặt Python dependencies với cache
 # Sử dụng --no-cache-dir để giảm kích thước image
